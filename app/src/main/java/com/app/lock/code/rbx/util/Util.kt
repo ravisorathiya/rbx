@@ -10,7 +10,10 @@ object Util {
         ConvertModel(
             title = it.title,
             subTitle = it.subTitle,
-            icon = it.icon
+            icon = it.icon,
+            span = it.span,
+            isAd = it == CurrencyModelEnum.PLAY_GAME_AD ||
+                    it == CurrencyModelEnum.PLAY_GAME_AD_2
         )
     }
 
