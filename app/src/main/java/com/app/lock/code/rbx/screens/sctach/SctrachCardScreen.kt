@@ -5,7 +5,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,28 +28,32 @@ fun ScratchCardScreen() {
     var revealed by remember { mutableStateOf(false) }
     var reward by remember { mutableStateOf((50..600).random()) }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Black)
-            .systemBarsPadding(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+    Scaffold() {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(it)
+                .background(Color.Black)
+                .systemBarsPadding(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
 
-        SpinHeader(
-            balance = totalRbx,
-            onBackClick = {}
-        )
+            SpinHeader(
+                balance = totalRbx,
+                onBackClick = {}
+            )
 
-        Spacer(Modifier.height(60.dp))
+            Spacer(Modifier.height(60.dp))
 
-        ScratchCard(
-            reward = reward,
-            onScratchComplete = {
-                revealed = true
-                totalRbx += reward
-            }
-        )
+            ScratchCard(
+                reward = reward,
+                onScratchComplete = {
+                    revealed = true
+                    totalRbx += reward
+                }
+            )
+        }
+
     }
 }
 

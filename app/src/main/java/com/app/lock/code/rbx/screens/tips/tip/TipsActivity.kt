@@ -18,11 +18,12 @@ class TipsActivity : ComponentActivity() {
         setContent {
             RbxTheme {
                 TipsScreen(
-                    onItemClick = {item->
+                    onItemClick = { item ->
                         val intent = Intent(this, TipDetailActivity::class.java)
                         intent.putExtra("tip_item", item)
                         startActivity(intent)
-                    }
+                    },
+                    onBackClick = ::finish
                 )
             }
         }
@@ -34,6 +35,7 @@ class TipsActivity : ComponentActivity() {
 fun TipScreenPreview() {
 
     TipsScreen(
-        onItemClick = {  }
+        onItemClick = { },
+        onBackClick = {  }
     )
 }

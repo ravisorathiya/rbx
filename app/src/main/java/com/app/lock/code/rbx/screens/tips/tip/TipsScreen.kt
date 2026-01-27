@@ -1,6 +1,7 @@
 package com.app.lock.code.rbx.screens.tips.tip
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,30 +14,37 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.app.lock.code.rbx.screens.tips.tip.TipUtil.tipsList
 import com.app.lock.code.rbx.screens.tips.tip.composables.TipRow
+import com.app.lock.code.rbx.screens.tips.tip.composables.TipTopBar
 
 @Composable
 fun TipsScreen(
-    onItemClick: (TipItem) -> Unit
+    onItemClick: (TipItem) -> Unit,
+    onBackClick: () -> Unit,
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
+        topBar = {
+            TipTopBar(onBackClick = onBackClick)
+        },
         containerColor = Color.Black
     ) { innerPadding ->
-
-        LazyColumn(
-            contentPadding = innerPadding,
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 16.dp, vertical = 12.dp)
-        ) {
-            items(items = tipsList, key = { it.id }) { item ->
-                TipRow(
-                    item = item,
-                    onClick = { onItemClick(item) }
-                )
+        Box(Modifier.fillMaxSize().padding(innerPadding)) {
+            LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 16.dp, vertical = 12.dp)
+            ) {
+                items(items = tipsList, key = { it.id }) { item ->
+                    TipRow(
+                        item = item,
+                        onClick = { onItemClick(item) }
+                    )
+                }
             }
+
         }
+
     }
 }
 
@@ -49,6 +57,7 @@ fun TipsScreen(
 fun TipsScreenPreview() {
 
     TipsScreen(
-        onItemClick = {  }
+        onItemClick = { },
+        onBackClick = {  }
     )
 }

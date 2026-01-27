@@ -1,6 +1,7 @@
 package com.app.lock.code.rbx.screens.memes
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -29,21 +30,23 @@ fun MemesScreen(
         }
     ) { innerPadding ->
 
-        LazyColumn(
-            contentPadding = innerPadding,
-            verticalArrangement = Arrangement.spacedBy(14.dp),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 16.dp, vertical = 12.dp)
-        ) {
-            items(memeList, key = { it.id }) { meme ->
-                MemeItemRow(
-                    meme = meme,
-                    onShareClick = { onShareClick(meme) }
-                )
+        Box(Modifier.fillMaxSize().padding(innerPadding)){
+            LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(14.dp),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 16.dp, vertical = 12.dp)
+            ) {
+                items(memeList, key = { it.id }) { meme ->
+                    MemeItemRow(
+                        meme = meme,
+                        onShareClick = { onShareClick(meme) }
+                    )
+                }
+
+                item { Spacer(modifier = Modifier.height(80.dp)) } // space for bottom ad if added later
             }
 
-            item { Spacer(modifier = Modifier.height(80.dp)) } // space for bottom ad if added later
         }
     }
 }
