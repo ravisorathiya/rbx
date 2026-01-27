@@ -1,5 +1,6 @@
 package com.app.lock.code.rbx.screens.main
 
+import android.R.attr.onClick
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -30,13 +31,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.app.lock.code.rbx.R
+import com.app.lock.code.rbx.model.ConvertModel
 import com.app.lock.code.rbx.screens.main.composables.CurrencyCalcCard
 import com.app.lock.code.rbx.screens.main.composables.ImageButtonCard
 import com.app.lock.code.rbx.screens.main.composables.ScorePillButton
 import com.app.lock.code.rbx.util.Util
 
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    onClick : (ConvertModel) -> Unit
+) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         containerColor = Color.Black,
@@ -130,7 +134,10 @@ fun MainScreen() {
 //                            modifier = Modifier.height(250.dp)
 //                        )
                     } else {
-                        CurrencyCalcCard(item)
+                        CurrencyCalcCard(
+                            item = item,
+                            onClick = onClick
+                        )
                     }
                 }
             }
@@ -142,5 +149,7 @@ fun MainScreen() {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun MainScreenPrevoew() {
-    MainScreen()
+    MainScreen(
+        onClick = {  }
+    )
 }

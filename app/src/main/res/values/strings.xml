@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">RBX Calculator</string>
+    <string name="title_activity_tips">TipsActivity</string>
+    <string name="title_activity_tip_detail">TipDetailActivity</string>
+    <string name="title_activity_memes">MemesActivity</string>
+    <string name="title_activity_spin">SpinActivity</string>
+    <string name="title_activity_scrtach_card">ScrtachCardActivity</string>
 </resources>
