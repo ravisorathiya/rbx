@@ -1,6 +1,5 @@
 package com.app.lock.code.rbx.screens.main
 
-import android.R.attr.onClick
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -33,13 +32,15 @@ import androidx.compose.ui.unit.sp
 import com.app.lock.code.rbx.R
 import com.app.lock.code.rbx.model.ConvertModel
 import com.app.lock.code.rbx.screens.main.composables.CurrencyCalcCard
+import com.app.lock.code.rbx.screens.main.composables.FakeAdCard
 import com.app.lock.code.rbx.screens.main.composables.ImageButtonCard
 import com.app.lock.code.rbx.screens.main.composables.ScorePillButton
 import com.app.lock.code.rbx.util.Util
 
 @Composable
 fun MainScreen(
-    onClick : (ConvertModel) -> Unit
+    onClick: (ConvertModel) -> Unit,
+    onSettingClick: () -> Unit,
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -89,7 +90,10 @@ fun MainScreen(
                         )
                     }
 
-                    ImageButtonCard(R.drawable.setting)
+                    ImageButtonCard(
+                        icon = R.drawable.setting,
+                        onClick = onSettingClick
+                    )
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -130,9 +134,11 @@ fun MainScreen(
                     key = { _, item -> item.hashCode() }
                 ) { index, item ->
                     if (index == 1) {
-//                        FakeAdCard(
-//                            modifier = Modifier.height(250.dp)
-//                        )
+                        FakeAdCard(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(280.dp)
+                        )
                     } else {
                         CurrencyCalcCard(
                             item = item,
@@ -150,6 +156,7 @@ fun MainScreen(
 @Composable
 fun MainScreenPrevoew() {
     MainScreen(
-        onClick = {  }
+        onClick = { },
+        onSettingClick = { }
     )
 }

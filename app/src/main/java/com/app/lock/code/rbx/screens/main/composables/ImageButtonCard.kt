@@ -1,7 +1,9 @@
 package com.app.lock.code.rbx.screens.main.composables
 
+import android.R.attr.onClick
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -17,12 +19,15 @@ import androidx.compose.ui.unit.dp
 import com.app.lock.code.rbx.R
 
 @Composable
-fun ImageButtonCard(icon: Int) {
+fun ImageButtonCard(icon: Int,onClick : () -> Unit) {
     Box(
         modifier = Modifier
             .size(48.dp)
             .clip(CircleShape)
-            .background(Color.Black),
+            .background(Color.Black)
+            .clickable(onClick = onClick)
+        ,
+
         contentAlignment = Alignment.Center
     ) {
         Image(
@@ -41,6 +46,7 @@ fun ImageButtonCard(icon: Int) {
 @Composable
 fun ImageButtonCardPreview() {
     ImageButtonCard(
-        icon = R.drawable.calc
+        icon = R.drawable.calc,
+        onClick = {  }
     )
 }

@@ -26,8 +26,10 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun SpinHeader(
+    title: String,
     balance: Int,
-    onBackClick: () -> Unit = {}
+    onBackClick: () -> Unit = {},
+    showWaller : Boolean = true
 ) {
     Box(
         modifier = Modifier
@@ -60,22 +62,26 @@ fun SpinHeader(
 
         // Title
         Text(
-            text = "Spin & Wheel",
+            text = title,
             color = Color.White,
             fontSize = 22.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.align(Alignment.TopEnd)
+            modifier = Modifier
+                .align(Alignment.TopEnd)
                 .padding(top = 24.dp, end = 16.dp)
         )
 
         // Wallet Bar overlapping bottom
-        WalletBar(
-            amount = balance,
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(horizontal = 20.dp)
-                .offset(y = 8.dp) // 👈 pushes it below header like design
-        )
+        if (showWaller) {
+            WalletBar(
+                amount = balance,
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(horizontal = 20.dp)
+                    .offset(y = 8.dp) // 👈 pushes it below header like design
+            )
+
+        }
     }
 }
 
@@ -89,7 +95,8 @@ fun SpinHeaderPreview() {
     Column(modifier = Modifier.background(Color.Black)) {
         SpinHeader(
             balance = 472,
-            onBackClick = {}
+            onBackClick = {},
+            title = "Spin & Wheel"
         )
     }
 }

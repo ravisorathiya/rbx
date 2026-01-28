@@ -1,4 +1,4 @@
-package com.app.lock.code.rbx.screens.tips.tip.composables
+package com.app.lock.code.rbx.screens.settings.composables
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -23,13 +22,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun TipTopBar(onBackClick: () -> Unit) {
+fun SettingsTopBar(onBackClick: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(70.dp)
             .background(Color(0xFF121212))
-            .statusBarsPadding()
     ) {
 
         IconButton(
@@ -40,30 +38,23 @@ fun TipTopBar(onBackClick: () -> Unit) {
                 .align(Alignment.CenterStart)
                 .background(Color.Black, CircleShape)
         ) {
-            Icon(
-                imageVector = Icons.AutoMirrored.Default.ArrowBack,
-                contentDescription = null,
-                tint = Color.White
-            )
+            Icon(Icons.AutoMirrored.Default.ArrowBack, null, tint = Color.White)
         }
 
         Text(
-            text = "Tips & Tricks",
+            text = "Settings",
             color = Color.White,
-            fontSize = 20.sp,
-            fontWeight = FontWeight.SemiBold,
+            fontSize = 22.sp,
+            fontWeight = FontWeight.Bold,
             modifier = Modifier.align(Alignment.Center)
         )
     }
 }
 
-
-@Preview(
-    name = "Memes Top Bar",
-    showBackground = true,
-    backgroundColor = 0xFF000000
-)
+@Preview
 @Composable
-fun MemesTopBarPreview() {
-    TipTopBar(onBackClick = {})
+fun SettingsTopBarPreview() {
+    SettingsTopBar({
+
+    })
 }

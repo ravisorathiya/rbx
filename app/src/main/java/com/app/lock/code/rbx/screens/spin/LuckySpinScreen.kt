@@ -52,7 +52,10 @@ fun LuckySpinScreen(onBackClick: () -> Unit = {}) {
             .fillMaxSize()
             .background(Color.Black)
     ) {
-        SpinHeader(balance = totalRbx, onBackClick = onBackClick)
+        SpinHeader(
+            balance = totalRbx, onBackClick = onBackClick,
+            title = "Lucky Spin",
+        )
 
         Spacer(Modifier.height(60.dp)) // space after overlapping wallet
 

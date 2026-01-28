@@ -5,4 +5,7 @@
     <string name="title_activity_memes">MemesActivity</string>
     <string name="title_activity_spin">SpinActivity</string>
     <string name="title_activity_scrtach_card">ScrtachCardActivity</string>
+    <string name="title_activity_setting">SettingActivity</string>
+    <string name="title_activity_quiz">QuizActivity</string>
+    <string name="title_activity_calc">CalcActivity</string>
 </resources>

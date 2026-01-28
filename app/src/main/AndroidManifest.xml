@@ -13,6 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rbx">
         <activity
+            android:name=".screens.calc.CalcActivity"
+            android:exported="false"
+            android:label="@string/title_activity_calc"
+            android:theme="@style/Theme.Rbx" />
+        <activity
+            android:name=".screens.quiz.QuizActivity"
+            android:exported="false"
+            android:label="@string/title_activity_quiz"
+            android:theme="@style/Theme.Rbx" />
+        <activity
+            android:name=".screens.settings.SettingActivity"
+            android:exported="false"
+            android:label="@string/title_activity_setting"
+            android:theme="@style/Theme.Rbx" />
+        <activity
             android:name=".screens.sctach.ScrtachCardActivity"
             android:exported="false"
             android:label="@string/title_activity_scrtach_card"

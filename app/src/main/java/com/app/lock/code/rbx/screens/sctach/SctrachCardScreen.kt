@@ -5,9 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -22,43 +19,46 @@ import com.app.lock.code.rbx.screens.sctach.composables.ScratchCard
 import com.app.lock.code.rbx.screens.spin.composables.SpinHeader
 
 @Composable
-fun ScratchCardScreen() {
+fun ScratchCardScreen(
+    onBackClick: () -> Unit,
+) {
 
     var totalRbx by remember { mutableStateOf(472) }
     var revealed by remember { mutableStateOf(false) }
     var reward by remember { mutableStateOf((50..600).random()) }
 
-    Scaffold() {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(it)
-                .background(Color.Black)
-                .systemBarsPadding(),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black)
+//                .systemBarsPadding()
+        ,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
 
-            SpinHeader(
-                balance = totalRbx,
-                onBackClick = {}
-            )
+        SpinHeader(
+            balance = totalRbx,
+            onBackClick = onBackClick,
+            title = "Scratch Card"
+        )
 
-            Spacer(Modifier.height(60.dp))
+        Spacer(Modifier.height(60.dp))
 
-            ScratchCard(
-                reward = reward,
-                onScratchComplete = {
-                    revealed = true
-                    totalRbx += reward
-                }
-            )
-        }
-
+        ScratchCard(
+            reward = reward,
+            onScratchComplete = {
+                revealed = true
+                totalRbx += reward
+            }
+        )
     }
+
 }
 
 @Preview
 @Composable
 fun ScratchCardScreenReview() {
-    ScratchCardScreen()
+    ScratchCardScreen(
+        onBackClick = {}
+    )
 }

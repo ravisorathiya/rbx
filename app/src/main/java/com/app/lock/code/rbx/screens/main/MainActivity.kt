@@ -15,40 +15,52 @@ class MainActivity : ComponentActivity() {
         setContent {
             RbxTheme {
                 MainScreen(
-                    onClick = {conv->
-                        val enums = CurrencyModelEnum.entries.firstOrNull { it.title == conv.title } ?: return@MainScreen
+                    onClick = { conv ->
+                        val enums = CurrencyModelEnum.entries.firstOrNull { it.title == conv.title }
+                            ?: return@MainScreen
                         when (enums) {
                             CurrencyModelEnum.ALL_CALCULATOR -> {
+                                AppNavigator.toCalc(this)
 
                             }
+
                             CurrencyModelEnum.AD -> {
 
                             }
+
                             CurrencyModelEnum.PLAY_GAME_AD -> {
 
                             }
+
                             CurrencyModelEnum.SCRATCH_CARD -> {
                                 AppNavigator.toScratchCard(this)
                             }
+
                             CurrencyModelEnum.QUIZ_GAME -> {
+                                AppNavigator.toQuiz(this)
 
                             }
+
                             CurrencyModelEnum.PLAY_GAME_AD_2 -> {
 
                             }
+
                             CurrencyModelEnum.LUCKY_SPIN -> {
                                 AppNavigator.toSpin(this)
                             }
+
                             CurrencyModelEnum.MEME -> {
                                 AppNavigator.toMeme(this)
 
                             }
+
                             CurrencyModelEnum.TIPS_TRICKS -> {
                                 AppNavigator.toTips(this)
 
                             }
                         }
-                    }
+                    },
+                    onSettingClick = { AppNavigator.toSetting(this) }
                 )
             }
         }

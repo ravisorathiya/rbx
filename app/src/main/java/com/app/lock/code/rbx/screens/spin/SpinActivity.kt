@@ -23,7 +23,9 @@ class SpinActivity : ComponentActivity() {
                             .fillMaxSize()
                             .padding(innerPadding)
                     ) {
-                        LuckySpinScreen()
+                        LuckySpinScreen(
+                            onBackClick = ::finish
+                        )
                     }
                 }
             }

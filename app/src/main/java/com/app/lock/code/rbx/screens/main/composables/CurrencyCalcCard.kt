@@ -57,7 +57,7 @@ fun CurrencyCalcCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
 
-                ImageButtonCard(item.icon)
+                ImageButtonCard(item.icon,{ onClick(item) })
 
                 Spacer(modifier = Modifier.width(12.dp))
 
@@ -83,7 +83,10 @@ fun CurrencyCalcCard(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
 
-                ImageButtonCard(item.icon)
+                ImageButtonCard(
+                    item.icon,
+                    onClick = { onClick(item) }
+                )
 
                 Column {
                     Text(

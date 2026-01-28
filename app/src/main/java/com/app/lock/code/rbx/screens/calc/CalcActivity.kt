@@ -1,4 +1,4 @@
-package com.app.lock.code.rbx.screens.sctach
+package com.app.lock.code.rbx.screens.calc
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,18 +11,25 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.app.lock.code.rbx.ui.theme.RbxTheme
 
-class ScrtachCardActivity : ComponentActivity() {
+class CalcActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             RbxTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Scaffold(
+                    modifier = Modifier.fillMaxSize()
+                ) { innerPadding ->
                     Box(
-                        Modifier.fillMaxSize().padding(innerPadding)
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding)
                     ) {
-                        ScratchCardScreen(
-                            onBackClick = ::finish
+                        CalcScreen(
+                            onBackClick = ::finish,
+                            onItemClick = {
+
+                            }
                         )
                     }
                 }
@@ -30,4 +37,3 @@ class ScrtachCardActivity : ComponentActivity() {
         }
     }
 }
-
