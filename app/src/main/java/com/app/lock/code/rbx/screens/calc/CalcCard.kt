@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.app.lock.code.rbx.util.Util
 
 @Composable
 fun CalcCard(
@@ -75,7 +76,7 @@ fun CalcCard(
                 modifier = Modifier
                     .align(Alignment.TopEnd)
                     .clip(RoundedCornerShape(50))
-                    .background(Color(0xFF00C853))
+                    .background(Util.PRIMARY__COLOR)
                     .padding(horizontal = 6.dp, vertical = 2.dp)
             )
         }

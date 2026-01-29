@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -29,6 +30,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.app.lock.code.rbx.R
+import com.app.lock.code.rbx.model.CalcType
 import com.app.lock.code.rbx.screens.main.composables.SafeImage
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -38,20 +40,21 @@ fun CalcScreen(
     onItemClick: (CalcItem) -> Unit = {}
 ) {
     val items = listOf(
-        CalcItem("USD to RBX", "Calculate USD to RBX value", R.drawable.ic_usd_rbx),
-        CalcItem("RBX to USD", "Calculate RBX to USD value", R.drawable.ic_rbx_usd),
-        CalcItem("RBX to Dollar", "Calculate RBX to Dollar value", R.drawable.ic_rbx_dollar),
-        CalcItem("Dollar to RBX", "Calculate Dollar to RBX value", R.drawable.ic_dollar_rbx),
-        CalcItem("BC to RBX", "Calculate BC to RBX value", R.drawable.ic_bc_rbx),
-        CalcItem("TBC to RBX", "Calculate TBC to RBX value", R.drawable.ic_tbc_rbx),
-        CalcItem("OBC to RBX", "Calculate OBC to RBX value", R.drawable.ic_obc_rbx),
-        CalcItem("Play Game", "Play smart, Play hard", R.drawable.ic_game, isAdBadge = true)
+        CalcItem("USD to RBX", "Calculate USD to RBX value", R.drawable.ic_usd_rbx, CalcType.USD_TO_RBX),
+        CalcItem("RBX to USD", "Calculate RBX to USD value", R.drawable.ic_rbx_usd,CalcType.RBX_TO_USD),
+        CalcItem("RBX to Dollar", "Calculate RBX to Dollar value", R.drawable.ic_rbx_dollar,CalcType.RBX_TO_DOLLAR),
+        CalcItem("Dollar to RBX", "Calculate Dollar to RBX value", R.drawable.ic_dollar_rbx,CalcType.DOLLAR_TO_RBX),
+        CalcItem("BC to RBX", "Calculate BC to RBX value", R.drawable.ic_bc_rbx,CalcType.BC_TO_RBX),
+        CalcItem("TBC to RBX", "Calculate TBC to RBX value", R.drawable.ic_tbc_rbx,CalcType.TBC_TO_RBX),
+        CalcItem("OBC to RBX", "Calculate OBC to RBX value", R.drawable.ic_obc_rbx,CalcType.OBC_TO_RBX),
+        CalcItem("Play Game", "Play smart, Play hard", R.drawable.ic_game, CalcType.ADVERT,isAdBadge = true)
     )
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Black)
+            .systemBarsPadding()
     ) {
 
         // 🔹 Top Bar

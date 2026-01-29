@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.app.lock.code.rbx.util.Util
 
 @Composable
 fun ScratchCard(
@@ -44,7 +45,7 @@ fun ScratchCard(
             text = "$reward RBX",
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold,
-            color = Color(0xFF5BC58C)
+            color = Util.PRIMARY__COLOR
         )
 
         // 🧩 Patterned scratch layer

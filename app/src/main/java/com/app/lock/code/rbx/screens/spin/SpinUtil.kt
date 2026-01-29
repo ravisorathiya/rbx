@@ -17,11 +17,14 @@ object SpinUtil {
     )
 
 
-    fun calculateWinningIndex(finalRotation: Float, itemCount: Int): Int {
-        val adjustedRotation = (finalRotation - 90f) % 360
-        val normalized = (360 - adjustedRotation) % 360
+    fun calculateWinningIndex(rotation: Float, itemCount: Int): Int {
+        val normalizedRotation = (rotation % 360 + 360) % 360
         val segmentAngle = 360f / itemCount
-        return (normalized / segmentAngle).toInt()
+
+        val pointerAngle = 270f // pointer at top
+        val relativeAngle = (pointerAngle - normalizedRotation + 360f) % 360f
+
+        return (relativeAngle / segmentAngle).toInt().coerceIn(0, itemCount - 1)
     }
 
 

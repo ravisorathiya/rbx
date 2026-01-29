@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.app.lock.code.rbx.screens.quiz.composables.QuizOption
 import com.app.lock.code.rbx.screens.spin.composables.SpinHeader
+import com.app.lock.code.rbx.util.Util
 
 @Composable
 fun QuizScreen(
@@ -62,7 +63,7 @@ fun QuizScreen(
             modifier = Modifier
                 .padding(16.dp)
                 .fillMaxWidth()
-                .background(Color(0xFF5BC58C), RoundedCornerShape(20.dp))
+                .background(Util.PRIMARY__COLOR, RoundedCornerShape(20.dp))
                 .padding(12.dp),
             contentAlignment = Alignment.Center
         ) {

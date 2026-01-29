@@ -20,13 +20,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.app.lock.code.rbx.util.Util
 
 @Composable
 fun WalletBar(amount: Int, modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .background(Color(0xFF5BC58C), RoundedCornerShape(40.dp))
+            .background(Util.PRIMARY__COLOR, RoundedCornerShape(40.dp))
             .padding(vertical = 18.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically

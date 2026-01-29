@@ -8,4 +8,6 @@
     <string name="title_activity_setting">SettingActivity</string>
     <string name="title_activity_quiz">QuizActivity</string>
     <string name="title_activity_calc">CalcActivity</string>
+    <string name="title_activity_cal_result">CalResultActivity</string>
+    <string name="title_activity_splash">SplashActivity</string>
 </resources>

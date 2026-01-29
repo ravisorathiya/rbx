@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.app.lock.code.rbx.R
+import com.app.lock.code.rbx.util.Util
 
 @Composable
 fun ScorePillButton(
@@ -34,7 +35,7 @@ fun ScorePillButton(
         modifier = modifier
             .height(52.dp)
             .clip(RoundedCornerShape(50))
-            .background(Color(0xFF5AC88E))
+            .background(Util.PRIMARY__COLOR)
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = ripple(bounded = true)

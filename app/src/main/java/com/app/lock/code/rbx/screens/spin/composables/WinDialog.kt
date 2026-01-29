@@ -8,6 +8,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import com.app.lock.code.rbx.util.Util
 
 @Composable
 fun WinDialog(
@@ -21,7 +22,7 @@ fun WinDialog(
         confirmButton = {
             Button(
                 onClick = onAddToWallet,
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF5BC58C))
+                colors = ButtonDefaults.buttonColors(containerColor = Util.PRIMARY__COLOR)
             ) {
                 Text("Add to Wallet", color = Color.Black)
             }

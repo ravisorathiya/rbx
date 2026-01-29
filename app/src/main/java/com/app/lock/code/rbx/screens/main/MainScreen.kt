@@ -35,6 +35,7 @@ import com.app.lock.code.rbx.screens.main.composables.CurrencyCalcCard
 import com.app.lock.code.rbx.screens.main.composables.FakeAdCard
 import com.app.lock.code.rbx.screens.main.composables.ImageButtonCard
 import com.app.lock.code.rbx.screens.main.composables.ScorePillButton
+import com.app.lock.code.rbx.util.DataUtil
 import com.app.lock.code.rbx.util.Util
 
 @Composable
@@ -100,7 +101,7 @@ fun MainScreen(
 
                 // ─── Score Button ──────────────────────────────
                 ScorePillButton(
-                    score = 472,
+                    score = DataUtil.rbxCoins,
                     modifier = Modifier
                         .padding(horizontal = 16.dp)
                         .fillMaxWidth()

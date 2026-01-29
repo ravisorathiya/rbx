@@ -1,4 +1,4 @@
-package com.app.lock.code.rbx.screens.settings.composables
+package com.app.lock.code.rbx.core.settings.composables
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.app.lock.code.rbx.util.Util
 
 @Composable
 fun SettingsItem(
@@ -47,7 +48,7 @@ fun SettingsItem(
                 modifier = Modifier
                     .size(46.dp)
                     .clip(CircleShape)
-                    .background(Color(0xFF5BC58C)),
+                    .background(Util.PRIMARY__COLOR),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(icon, null, tint = Color.Black)

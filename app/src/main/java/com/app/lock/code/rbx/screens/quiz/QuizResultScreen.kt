@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.app.lock.code.rbx.screens.spin.composables.SpinHeader
+import com.app.lock.code.rbx.util.Util
 
 @Composable
 fun QuizResultScreen(
@@ -60,7 +61,7 @@ fun QuizResultScreen(
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text("You've won ", color = Color.White)
-                Text("$reward", color = Color(0xFF5BC58C), fontWeight = FontWeight.Bold)
+                Text("$reward", color = Util.PRIMARY__COLOR, fontWeight = FontWeight.Bold)
             }
         }
 
@@ -72,7 +73,7 @@ fun QuizResultScreen(
                 .padding(12.dp)
                 .fillMaxWidth()
                 .height(55.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF5BC58C)),
+            colors = ButtonDefaults.buttonColors(containerColor = Util.PRIMARY__COLOR),
             shape = RoundedCornerShape(30.dp)
         ) {
             Text("Add to Wallet", color = Color.Black, fontWeight = FontWeight.Bold)

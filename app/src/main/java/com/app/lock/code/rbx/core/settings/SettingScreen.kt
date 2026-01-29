@@ -1,4 +1,4 @@
-package com.app.lock.code.rbx.screens.settings
+package com.app.lock.code.rbx.core.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -15,8 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.app.lock.code.rbx.screens.settings.composables.SettingsItem
-import com.app.lock.code.rbx.screens.settings.composables.SettingsTopBar
+import com.app.lock.code.rbx.core.settings.composables.SettingsItem
+import com.app.lock.code.rbx.core.settings.composables.SettingsTopBar
 import com.app.lock.code.rbx.ui.theme.RbxTheme
 
 @Composable

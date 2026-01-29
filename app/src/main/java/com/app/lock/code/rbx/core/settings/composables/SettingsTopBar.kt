@@ -1,4 +1,4 @@
-package com.app.lock.code.rbx.screens.settings.composables
+package com.app.lock.code.rbx.core.settings.composables
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

@@ -11,9 +11,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.app.lock.code.rbx.ui.theme.RbxTheme
+import com.app.lock.code.rbx.util.DataUtil
+import kotlinx.coroutines.launch
 
 class QuizActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +25,9 @@ class QuizActivity : ComponentActivity() {
         setContent {
             RbxTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+
+                    val scope = rememberCoroutineScope()
+
                     Box(
                         Modifier
                             .fillMaxSize()
@@ -41,7 +47,11 @@ class QuizActivity : ComponentActivity() {
                         } else {
                             QuizResultScreen(
                                 score = score,
-                                onAddToWallet = { },
+                                onAddToWallet = {
+                                    scope.launch {
+                                        DataUtil.incrementCoins(it)
+                                    }
+                                },
                                 onBackClick = ::finish
                             ) 
                         }

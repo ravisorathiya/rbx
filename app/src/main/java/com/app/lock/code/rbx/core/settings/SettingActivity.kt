@@ -1,4 +1,4 @@
-package com.app.lock.code.rbx.screens.settings
+package com.app.lock.code.rbx.core.settings
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

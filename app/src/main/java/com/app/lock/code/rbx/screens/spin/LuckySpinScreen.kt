@@ -30,16 +30,15 @@ import com.app.lock.code.rbx.screens.spin.SpinUtil.calculateWinningIndex
 import com.app.lock.code.rbx.screens.spin.SpinUtil.wheelPrizes
 import com.app.lock.code.rbx.screens.spin.composables.LuckyWheel
 import com.app.lock.code.rbx.screens.spin.composables.SpinHeader
-import com.app.lock.code.rbx.screens.spin.composables.SpinTopBar
 import com.app.lock.code.rbx.screens.spin.composables.TrianglePointer
-import com.app.lock.code.rbx.screens.spin.composables.WalletBar
 import com.app.lock.code.rbx.screens.spin.composables.WinDialog
+import com.app.lock.code.rbx.util.DataUtil
+import com.app.lock.code.rbx.util.Util
 import kotlinx.coroutines.launch
 
 @Composable
 fun LuckySpinScreen(onBackClick: () -> Unit = {}) {
 
-    var totalRbx by remember { mutableStateOf(472) }
     var rotation by remember { mutableStateOf(0f) }
     var isSpinning by remember { mutableStateOf(false) }
     var showDialog by remember { mutableStateOf(false) }
@@ -53,7 +52,7 @@ fun LuckySpinScreen(onBackClick: () -> Unit = {}) {
             .background(Color.Black)
     ) {
         SpinHeader(
-            balance = totalRbx, onBackClick = onBackClick,
+            balance = DataUtil.rbxCoins, onBackClick = onBackClick,
             title = "Lucky Spin",
         )
 
@@ -76,26 +75,31 @@ fun LuckySpinScreen(onBackClick: () -> Unit = {}) {
                 if (isSpinning) return@Button
 
                 isSpinning = true
+
                 val extraSpins = (5..8).random() * 360
                 val randomAngle = (0..359).random()
-                val finalRotation = rotation + extraSpins + randomAngle
+                val spinTarget = rotation + extraSpins + randomAngle
 
                 scope.launch {
                     animate(
                         initialValue = rotation,
-                        targetValue = finalRotation,
+                        targetValue = spinTarget.toFloat(),
                         animationSpec = tween(4000, easing = FastOutSlowInEasing)
                     ) { value, _ ->
                         rotation = value
                     }
 
-                    val index = calculateWinningIndex(finalRotation, wheelPrizes.size)
+                    // Normalize once animation ends
+                    rotation = (rotation % 360 + 360) % 360
+
+                    val index = calculateWinningIndex(rotation, wheelPrizes.size)
                     wonAmount = wheelPrizes[index].amount
+
                     showDialog = true
                     isSpinning = false
                 }
             },
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF5BC58C)),
+            colors = ButtonDefaults.buttonColors(containerColor = Util.PRIMARY__COLOR),
             shape = RoundedCornerShape(30.dp),
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
@@ -110,8 +114,10 @@ fun LuckySpinScreen(onBackClick: () -> Unit = {}) {
         WinDialog(
             amount = wonAmount,
             onAddToWallet = {
-                totalRbx += wonAmount
-                showDialog = false
+                scope.launch {
+                    DataUtil.incrementCoins(wonAmount)
+                    showDialog = false
+                }
             },
             onDismiss = { showDialog = false }
         )

@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,16 +18,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.app.lock.code.rbx.screens.sctach.composables.ScratchCard
 import com.app.lock.code.rbx.screens.spin.composables.SpinHeader
+import com.app.lock.code.rbx.util.DataUtil
+import kotlinx.coroutines.launch
 
 @Composable
 fun ScratchCardScreen(
     onBackClick: () -> Unit,
 ) {
 
-    var totalRbx by remember { mutableStateOf(472) }
     var revealed by remember { mutableStateOf(false) }
     var reward by remember { mutableStateOf((50..600).random()) }
 
+    val scope = rememberCoroutineScope()
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -37,7 +40,7 @@ fun ScratchCardScreen(
     ) {
 
         SpinHeader(
-            balance = totalRbx,
+            balance = DataUtil.rbxCoins,
             onBackClick = onBackClick,
             title = "Scratch Card"
         )
@@ -47,8 +50,10 @@ fun ScratchCardScreen(
         ScratchCard(
             reward = reward,
             onScratchComplete = {
-                revealed = true
-                totalRbx += reward
+                scope.launch {
+                    revealed = true
+                    DataUtil.incrementCoins(reward)
+                }
             }
         )
     }

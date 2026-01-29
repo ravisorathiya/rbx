@@ -1,4 +1,4 @@
-package com.app.lock.code.rbx.screens.settings
+package com.app.lock.code.rbx.core.settings
 
 import android.content.ActivityNotFoundException
 import android.content.Context
