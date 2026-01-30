@@ -1,4 +1,4 @@
-package com.app.lock.code.rbx
+package com.sfinfotech.rblxcal
 
 import org.junit.Test
 

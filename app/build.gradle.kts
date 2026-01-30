@@ -3,17 +3,19 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("kotlin-parcelize")
+    alias(libs.plugins.google.gms.google.services)
+    alias(libs.plugins.google.firebase.crashlytics)
 
 }
 
 android {
-    namespace = "com.app.lock.code.rbx"
+    namespace = "com.sfinfotech.rblxcal"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.app.lock.code.rbx"
+        applicationId = "com.sfinfotech.rblxcal"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -59,6 +61,8 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.compose.foundation.layout)
     implementation(libs.androidx.ui)
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.config)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
